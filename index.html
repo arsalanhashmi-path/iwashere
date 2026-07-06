@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Press once to say you were here for a global football moment."
+    />
+    <title>I Was Here</title>
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="site-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="stadium-bg" aria-hidden="true"></div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+
+        <header class="topbar" aria-label="Live event status">
+          <a class="brand" href="/" aria-label="I Was Here home">
+            <span class="brand-mark"></span>
+            <span>I Was Here</span>
+          </a>
+          <div class="live-pill">
+            <span class="live-dot"></span>
+            <span>LIVE</span>
+          </div>
+        </header>
+
+        <div class="hero-grid">
+          <section class="witness-panel">
+            <p class="eyebrow">
+              <span id="browserTime">--:--</span> · Spain vs Portugal
+            </p>
+            <h1 id="page-title">
+              If this is the last time, leave your mark.
+            </h1>
+            <p class="subcopy">
+              Press the button to leave your mark on a moment football may never see again.
+            </p>
+
+            <div class="action-row">
+              <button class="witness-button" id="witnessButton" type="button">
+                I was here
+              </button>
+              <div class="witness-id" id="witnessId" aria-live="polite">
+                One press. One mark.
+              </div>
+              <form class="email-form" id="emailForm">
+                <label class="email-label" for="emailInput">
+                  Get the final witness map
+                </label>
+                <div class="email-row">
+                  <input
+                    id="emailInput"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                  <button type="submit">Join</button>
+                </div>
+                <p class="email-status" id="emailStatus" aria-live="polite">
+                  Optional. No spam, just the final snapshot.
+                </p>
+              </form>
+            </div>
+
+            <div class="stats-grid" aria-label="Global witness totals">
+              <div class="stat">
+                <span class="stat-value" id="totalWitnesses">0</span>
+                <span class="stat-label">global witnesses</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="countriesCount">0</span>
+                <span class="stat-label">countries represented</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="map-panel" aria-label="World witness map">
+            <div class="map-header">
+              <div>
+                <p class="panel-kicker">World Map</p>
+                <h2>The world was here</h2>
+              </div>
+              <div class="pulse-key">
+                <span></span>
+                live presses
+              </div>
+            </div>
+            <div class="map-wrap">
+              <svg id="worldMap" role="img" aria-label="Country witness activity map"></svg>
+              <div class="map-loading" id="mapLoading">Loading global map</div>
+              <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="dashboard-band" aria-label="Witness details">
+        <div class="leaderboard">
+          <div class="section-heading">
+            <p class="panel-kicker">Leaderboard</p>
+            <h2>Top countries</h2>
+          </div>
+          <ol id="leaderboardList"></ol>
+        </div>
+
+        <div class="activity">
+          <div class="section-heading">
+            <p class="panel-kicker">Now</p>
+            <h2>Live activity</h2>
+          </div>
+          <ul id="activityFeed" aria-live="polite"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/d3-array@3"></script>
+    <script src="https://unpkg.com/d3-geo@3"></script>
+    <script src="https://unpkg.com/d3-selection@3"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
